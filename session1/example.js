@@ -161,3 +161,36 @@ const skier = {
 		console.log('speed:', mph);
 	}
 }
+
+// Object Literal Enhancement
+
+var peaks = ["Tallac", "Ralston", "Rose"]
+var [last] = peaks.reverse()
+console.log(last) // Rose
+console.log(peaks.join(', ')) // Rose, Ralston, Tallac
+
+var peaks = ["Tallac", "Ralston", "Rose"]
+var [last] = [...peaks].reverse()
+console.log(last) // Rose
+console.log(peaks.join(', ')) // Tallac, Ralston, Rose
+
+var lakes = ["Donner", "Marlette", "Fallen Leaf", "Cascade"]
+var [first, ...rest] = lakes
+console.log(rest.join(", ")) // "Marlette, Fallen Leaf, Cascade"
+
+function directions(...args) {
+	var [start, ...remaining] = args
+	var [finish, ...stops] = remaining.reverse()
+	console.log(`drive through ${args.length} towns`)
+	console.log(`start in ${start}`)
+	console.log(`the destination is ${finish}`)
+	console.log(`stopping ${stops.length} times in between`)
+}
+
+directions(
+	"Truckee",
+	"Tahoe City",
+	"Sunnyside",
+	"Homewood",
+	"Tahoma"
+)
