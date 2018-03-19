@@ -13,4 +13,4 @@
 - The Spread Operator
 ## 5. Promises
 ## 6. Classes
-## 5. ES6 Modules
+## 7. ES6 Modules
