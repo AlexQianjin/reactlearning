@@ -174,3 +174,176 @@ Any element that has an HTML class attribute is using className
 for that property instead of class. Since class is a reserved word
 in JavaScript, we have to use className to define the class
 attribute of an HTML element.
+
+## Constructing Elements with Data
+- The major advantage of using React is its ability to separate data from UI elements.
+Since React is just JavaScript, we can add JavaScript logic to help us build the React
+component tree. 
+
+``` javascript
+React.createElement("ul", {"className": "ingredients"},
+  React.createElement("li", null, "1 lb Salmon"),
+  React.createElement("li", null, "1 cup Pine Nuts"),
+  React.createElement("li", null, "2 cups Butter Lettuce"),
+  React.createElement("li", null, "1 Yellow Squash"),
+  React.createElement("li", null, "1/2 cup Olive Oil"),
+  React.createElement("li", null, "3 cloves of Garlic")
+);
+
+var items = [
+  "1 lb Salmon",
+  "1 cup Pine Nuts",
+  "2 cups Butter Lettuce",
+  "1 Yellow Squash",
+  "1/2 cup Olive Oil",
+  "3 cloves of Garlic"
+]
+
+React.createElement(
+  "ul",
+  { className: "ingredients" },
+  items.map(ingredient =>
+    React.createElement("li", null, ingredient)
+)
+```
+
+- Adding a key property
+``` javascript
+React.createElement("ul", {className: "ingredients"},
+  items.map((ingredient, i) =>
+  React.createElement("li", { key: i }, ingredient)
+)
+```
+
+## React Components
+- In React, we describe each of these parts as a component. Components allow us to
+reuse the same DOM structure for different recipes or different sets of data.
+![Component](component.png)
+- Let’s investigate the three different ways to create components: createClass, ES6
+classes, and stateless functional components
+
+### **React.createClass**
+- When React was first introduced in 2013, there was only one way to create a compo‐
+nent: the createClass function.
+React Components | 69New methods of creating components have emerged, but createClass is still used
+widely in React projects. The React team has indicated, however, that createClass
+may be deprecated in the future.
+
+``` javascript
+const IngredientsList = React.createClass({
+  displayName: "IngredientsList",
+  render() {
+    return React.createElement("ul", {"className": "ingredients"},
+      React.createElement("li", null, "1 lb Salmon"),
+      React.createElement("li", null, "1 cup Pine Nuts"),
+      React.createElement("li", null, "2 cups Butter Lettuce"),
+      React.createElement("li", null, "1 Yellow Squash"),
+      React.createElement("li", null, "1/2 cup Olive Oil"),
+      React.createElement("li", null, "3 cloves of Garlic")
+      )
+  }
+})
+
+const list = React.createElement(IngredientsList, null, null)
+
+ReactDOM.render(
+  list,
+  document.getElementById('react-container')
+)
+```
+``` html
+<IngredientsList>
+  <ul className="ingredients">
+    <li>1 lb Salmon</li>
+    <li>1 cup Pine Nuts</li>
+    <li>2 cups Butter Lettuce</li>
+    <li>1 Yellow Squash</li>
+    <li>1/2 cup Olive Oil</li>
+    <li>3 cloves of Garlic</li>
+  </ul>
+</IngredientsList>
+```
+- Data can be passed to React components as properties. We can create a reusable list of
+ingredients by passing that data to the list as an array:
+``` javascript
+const IngredientsList = React.createClass({
+  displayName: "IngredientsList",
+  render() {
+    return React.createElement("ul", {className: "ingredients"},
+      this.props.items.map((ingredient, i) =>
+      React.createElement("li", { key: i }, ingredient)
+      )
+    )
+  }
+})
+const items = [
+  "1 lb Salmon",
+  "1 cup Pine Nuts",
+  "2 cups Butter Lettuce",
+  "1 Yellow Squash",
+  "1/2 cup Olive Oil",
+  "3 cloves of Garlic"
+]
+ReactDOM.render(
+  React.createElement(IngredientsList, {items}, null),
+  document.getElementById('react-container')
+)
+```
+``` html
+<IngredientsList items=[...]>
+  <ul className="ingredients">
+    <li key="0">1 lb Salmon</li>
+    <li key="1">1 cup Pine Nuts</li>
+    <li key="2">2 cups Butter Lettuce</li>
+    <li key="3">1 Yellow Squash</li>
+    <li key="4">1/2 cup Olive Oil</li>
+    <li key="5">3 cloves of Garlic</li>
+  </ul>
+</IngredientsList>
+```
+- The components are objects. They can be used to encapsulate code just like classes.
+We can create a method that renders a single list item and use that to build out the list
+``` javascript
+const IngredientsList = React.createClass({
+  displayName: "IngredientsList",
+  renderListItem(ingredient, i) {
+    return React.createElement("li", { key: i }, ingredient)
+  },
+  render() {
+    return React.createElement("ul", {className: "ingredients"},
+    this.props.items.map(this.renderListItem)
+  )
+  }
+})
+```
+- DOM
+``` html
+<ul data-react-root class="ingredients">
+  <li>1 lb Salmon</li>
+  <li>1 cup Pine Nuts</li>
+  <li>2 cups Butter Lettuce</li>
+  <li>1 Yellow Squash</li>
+  <li>1/2 cup Olive Oil</li>
+  <li>3 cloves of Garlic</li>
+</ul>
+```
+
+### **React.Component**
+- One of the key features included in the ES6 spec is
+React.Component, an abstract class that we can use to build new React components.
+We can create custom components through inheritance by extending this class with
+ES6 syntax.
+``` javascript
+class IngredientsList extends React.Component {
+  renderListItem(ingredient, i) {
+    return React.createElement("li", { key: i }, ingredient)
+  }
+  render() {
+    return React.createElement("ul", {className: "ingredients"},
+    this.props.items.map(this.renderListItem)
+  )
+  }
+}
+```
+
+### **Stateless Functional Components**
