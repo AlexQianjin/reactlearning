@@ -347,3 +347,33 @@ class IngredientsList extends React.Component {
 ```
 
 ### **Stateless Functional Components**
+- Stateless functional components are functions, not objects; therefore, they do not
+have a “this” scope. Because they are simple, pure functions, we’ll use them as much
+as possible in our applications. There may come a point where the stateless functional
+component isn’t robust enough and we must fall back to using class or
+createClass, but in general the more you can use these, the better.
+
+``` javascript
+const IngredientsList = props =>
+  React.createElement("ul", {className: "ingredients"},
+    props.items.map((ingredient, i) =>
+      React.createElement("li", { key: i }, ingredient)
+  )
+)
+```
+- *Destructuring the properties argument*
+``` javascript
+const IngredientsList = ({items}) =>
+  React.createElement("ul", {className: "ingredients"},
+    items.map((ingredient, i) =>
+      React.createElement("li", { key: i }, ingredient)
+  )
+)
+```
+> **const with Stateless Functional Components**  
+Each of these stateless functional components uses const instead of
+var when creating a component. This is a common practice but not
+a requirement. const declares this function as a constant and pre‐
+vents us from redefining that variable later.
+
+## DOM Rendering
