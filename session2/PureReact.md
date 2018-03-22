@@ -377,3 +377,93 @@ a requirement. const declares this function as a constant and pre‐
 vents us from redefining that variable later.
 
 ## DOM Rendering
+- Since we are able to pass data to our components as props, we can separate our appli‐
+cation’s data from the logic that is used to create the UI. This gives us an isolated set
+of data that is much easier to work with and manipulate than the document object
+model. When we change any of the values in this isolated dataset, we change the state
+of our application.
+
+- Imagine storing all of the data in your application in a single JavaScript object. Every
+time you made a change to this object, you could send it to a component as props and
+rerender the UI. This means that ReactDOM.render is going to be doing a lot of heavy
+lifting.
+
+- In order for React to work in a reasonable amount of time, ReactDOM.render has to
+work smart, and it does. Instead of emptying and reconstructing the entire DOM, ReactDOM.render leaves the current DOM in place and only applies the minimal
+amount of changes required to mutate the DOM.
+
+## Factories
+- So far, the only way we have created elements has been with React.createElement.
+Another way to create a React element is to use factories. A factory is a special object
+that can be used to abstract away the details of instantiating objects. In React, we use
+factories to help us create React element instances.
+
+- React has built-in factories for all commonly supported HTML and SVG DOM elements, and you can use the React.createFactory function to build your own factories around specific components.
+
+``` html
+<h1>Baked Salmon</h1>
+```
+- *Using createFactory to create an h1*
+``` javascript
+React.DOM.h1(null, "Baked Salmon")
+```
+- *Building an unordered list with DOM factories*
+``` javascript
+React.DOM.ul({"className": "ingredients"},
+  React.DOM.li(null, "1 lb Salmon"),
+  React.DOM.li(null, "1 cup Pine Nuts"),
+  React.DOM.li(null, "2 cups Butter Lettuce"),
+  React.DOM.li(null, "1 Yellow Squash"),
+  React.DOM.li(null, "1/2 cup Olive Oil"),
+  React.DOM.li(null, "3 cloves of Garlic")
+)
+```
+- *Using map with factories*
+``` javascript
+var items = [
+  "1 lb Salmon",
+  "1 cup Pine Nuts",
+  "2 cups Butter Lettuce",
+  "1 Yellow Squash",
+  "1/2 cup Olive Oil",
+  "3 cloves of Garlic"
+]
+var list = React.DOM.ul(
+  { className: "ingredients" },
+  items.map((ingredient, key) =>
+    React.DOM.li({key}, ingredient)
+  )
+)
+ReactDOM.render(
+  list,
+  document.getElementById('react-container')
+)
+```
+### **Using Factories with Components**
+- *Creating a factory with IngredientsList*
+``` javascript
+const { render } = ReactDOM;
+
+const IngredientsList = ({ list }) =>
+  React.createElement('ul', null,
+    list.map((ingredient, i) =>
+      React.createElement('li', {key: i}, ingredient)
+    )
+  )
+
+const Ingredients = React.createFactory(IngredientsList)
+
+const list = [
+  "1 lb Salmon",
+  "1 cup Pine Nuts",
+  "2 cups Butter Lettuce",
+  "1 Yellow Squash",
+  "1/2 cup Olive Oil",
+  "3 cloves of Garlic"
+]
+
+render(
+  Ingredients({list}),
+  document.getElementById('react-container')
+)
+```
