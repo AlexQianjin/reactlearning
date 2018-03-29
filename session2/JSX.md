@@ -57,3 +57,36 @@ function appendTitle({this.props.title}) {
   )}
 </ul>
 ```
+
+### Babel
+- Most software languages allow you to compile your source code. JavaScript is an
+interpreted language: the browser interprets the code as text, so there is no need to
+compile JavaScript. However, not all browsers support the latest ES6 and ES7 syntax,
+and no browser supports JSX syntax. Since we want to use the latest features of Java‐
+Script along with JSX, we are going to need a way to convert our fancy source code
+into something that the browser can interpret. This process is called transpiling, and
+it is what Babel is designed to do.
+- *Including babel-core*
+``` html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Examples</title>
+  </head>
+  <body>
+    <div class="react-container"></div>
+    <!-- React Library & React DOM -->
+    <script src="https://unpkg.com/react@15.4.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js">
+    </script>
+    <script type="text/babel">
+    // JSX code here. Or link to separate JavaScript file that contains JSX.
+    </script>
+  </body>
+</html>
+```
+
+### Recipes as JSX
