@@ -90,3 +90,103 @@ it is what Babel is designed to do.
 ```
 
 ### Recipes as JSX
+- One of the reasons that we have grown to love React is that it allows us to write web
+applications with beautiful code. It is extremely rewarding to create beautifully writ‐
+ten modules that clearly communicate how the application functions. JSX provides us
+with a nice, clean way to express React elements in our code that makes sense to us
+and is immediately readable by the engineers that make up our community. The
+drawback of JSX is that it is not readable by the browser. Before our code can be
+interpreted by the browser, it needs to be converted from JSX into pure React.
+
+- *Finished code for recipe app*
+``` javascript
+var data = [
+  {
+    "name": "Baked Salmon",
+    "ingredients": [
+      { "name": "Salmon", "amount": 1, "measurement": "l lb" },
+      { "name": "Pine Nuts", "amount": 1, "measurement": "cup" },
+      { "name": "Butter Lettuce", "amount": 2, "measurement": "cups" },
+      { "name": "Yellow Squash", "amount": 1, "measurement": "med" },
+      { "name": "Olive Oil", "amount": 0.5, "measurement": "cup" },
+      { "name": "Garlic", "amount": 3, "measurement": "cloves" }
+    ],
+    "steps": [
+      "Preheat the oven to 350 degrees.",
+      "Spread the olive oil around a glass baking dish.",
+      "Add the salmon, garlic, and pine nuts to the dish.",
+      "Bake for 15 minutes.",
+      "Add the yellow squash and put back in the oven for 30 mins.",
+      "Remove from oven and let cool for 15 minutes. Add the lettuce and serve."
+    ]
+    ,
+    {
+    "name": "Fish Tacos",
+    "ingredients": [
+      { "name": "Whitefish", "amount": 1, "measurement": "l lb" },
+      { "name": "Cheese", "amount": 1, "measurement": "cup" },
+      { "name": "Iceberg Lettuce", "amount": 2, "measurement": "cups" },
+      { "name": "Tomatoes", "amount": 2, "measurement": "large"},
+      { "name": "Tortillas", "amount": 3, "measurement": "med" }
+    ],
+    "steps": [
+      "Cook the fish on the grill until hot.",
+      "Place the fish on the 3 tortillas.",
+      "Top them with lettuce, tomatoes, and cheese."
+    ]
+  }
+];
+
+const Recipe = ({ name, ingredients, steps }) =>
+  <section id={name.toLowerCase().replace(/ /g, "-")}>
+    <h1>{name}</h1>
+    <ul className="ingredients">
+      {ingredients.map((ingredient, i) =>
+        <li key={i}>{ingredient.name}</li>
+      )}
+    </ul>
+    <section className="instructions">
+      <h2>Cooking Instructions</h2>
+      {steps.map((step, i) =>
+        <p key={i}>{step}</p>
+      )}
+    </section>
+  </section>
+
+const Menu = ({ title, recipes }) =>
+  <article>
+    <header>
+      <h1>{title}</h1>
+    </header>
+    <div className="recipes">
+      {recipes.map((recipe, i) =>
+        <Recipe key={i} {...recipe} />
+      )}
+    </div>
+  </article>
+
+ReactDOM.render(
+  <Menu recipes={data} title="Delicious Recipes" />,
+  document.getElementById("react-container")
+)
+```
+> **Babel Presets**  
+  babel-preset-env  
+  babel-preset-react
+
+### Intro to Webpack
+- Once we start working in production with React, there are a lot of questions to consider: How do we want to deal with JSX and ES6+ transformation? How can we manage our dependencies? How can we optimize our images and CSS?  
+
+- Many different tools have emerged to answer these questions, including Browserify,Gulp, and Grunt. Due to its features and widespread adoption by large companies, webpack has also emerged as one of the leading tools for bundling CommonJS modules.  
+
+- Webpack is billed as a module bundler. A module bundler takes all of our different files (JavaScript, LESS, CSS, JSX, ES6, and so on) and turns them into a single file. The two main benefits of modular bundling are modularity and network performance.  
+
+- Modularity will allow you to break down your source code into parts, or modules, that are easier to work with, especially in a team environment.  
+
+- Network performance is gained by only needing to load one dependency in the browser, the bundle. Each script tag makes an HTTP request, and there is a latency penalty for each HTTP request. Bundling all of the dependencies into a single file allows you to load everything with one HTTP request, thereby avoiding additional latency
+
+- Aside from transpiling, webpack also can handle:
+  * _Code splitting_
+  * _Minifcation_
+  * _Feature ﬂagging_
+  * _Hot Module Replacement (HMR)_
