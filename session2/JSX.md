@@ -190,3 +190,10 @@ ReactDOM.render(
   * _Minifcation_
   * _Feature ﬂagging_
   * _Hot Module Replacement (HMR)_
+
+#### Webpack Loaders
+- A loader is a function that handles the transformations that we want to put our code through during the build process. If our application uses ES6, JSX, CoffeeScript, and other languages that can’t be read natively by the browser, we’ll specify the necessary loaders in the webpack.confg.js file to do the work of converting the code into syntax
+that can be read natively by the browser.
+
+#### Recipes App with a Webpack Build
+
