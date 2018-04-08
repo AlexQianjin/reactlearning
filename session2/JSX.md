@@ -196,4 +196,11 @@ ReactDOM.render(
 that can be read natively by the browser.
 
 #### Recipes App with a Webpack Build
-
+- *Modularity*
+  + Using the CommonJS module pattern in order to export modules that will later be imported or required by another part of the application makes our source code more approachable. It allows development teams to easily work together by allowing them to create and work with separate files that will be statically combined into a single file before sending to production.
+- *Composing*
+  + With modules, we can build small, simple, reusable React components that we can compose efficiently into applications. Smaller components are easier to comprehend, test, and reuse. They are also easier to replace down the line when enhancing your applications.
+- *Speed*
+  + Packaging all of the application’s modules and dependencies into a single client bundle will reduce the load time of your application because there is latency associated with each HTTP request. Packaging everything together in a single file means that the client will only need to make a single request. Minifying the code in the bundle will improve load time as well.
+- *Consistency*
+  + Since webpack will transpile JSX into React and ES6 or even ES7 into universal JavaScript, we can start using tomorrow’s JavaScript syntax today. Babel supports a wide range of ESNext syntax, which means we do not have to worry about whether the browser supports our code. It allows developers to consistently use cutting-edge JavaScript syntax.

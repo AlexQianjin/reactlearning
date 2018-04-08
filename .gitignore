@@ -25,3 +25,7 @@ src/cep-lib/package-lock.json
 # seesion1
 session1/src/node_modules
 session1/src/package-lock.json
+
+# seesion2
+session2/src/node_modules
+session2/src/package-lock.json

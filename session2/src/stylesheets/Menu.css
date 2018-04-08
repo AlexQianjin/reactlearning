@@ -1,0 +1,14 @@
+.title {
+	text-align: center;
+}
+
+.recipes {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	color: red
+}
+
+.instructions {
+	border: black dotted 1px;
+}
