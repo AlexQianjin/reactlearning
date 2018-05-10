@@ -23,7 +23,7 @@ Strings | React.PropTypes.string
 
 #### ES6 Classes and Stateless Functional Components
 - ES6 class
-```
+``` javascript
 class Summary extends React.Component { render() {
     const {ingredients, steps, title} = this.props return (
         <div className="summary">
@@ -52,7 +52,7 @@ Summary.defaultProps = {
 ```
 
 - Stateless functional component
-```
+``` javascript
 const Summary = ({ ingredients, steps, title }) => { return <div>
     <h1>{title}</h1>
     <p>{ingredients} Ingredients | {steps} Steps</p>
@@ -77,7 +77,7 @@ lect input from the user. Consider an HTML form element. These elements are ini�
 tially rendered, but the users can interact with them. When they do, the component
 should respond appropriately.
 - *AddColorForm*
-```
+``` javascript
 import { Component } from 'react'
 class AddColorForm extends Component {
     render() {
@@ -93,7 +93,7 @@ class AddColorForm extends Component {
 }
 ```
 -  AddColorForm with submit method
-```
+``` javascript
 import { Component } from 'react'
 class AddColorForm extends Component {
     constructor(props) {
@@ -137,12 +137,12 @@ pass data back as arguments. It’s called inverse data flow because we send the
 nent a function as a property, and the component sends data back as function argu‐
 ments.
 
-```
+``` javascript
 const logColor = (title, color) =>
     console.log(`New Color: ${title} | ${value}`)
 <AddColorForm onNewColor = { logColor } />
 ```
-```
+``` javascript
 submit() {
     const { _title, _color } = this.refs
     this.props.onNewColor(_title.value, _color.value)
@@ -151,7 +151,7 @@ submit() {
     _title.focus()
 }
 ```
-```
+``` javascript
 <AddColorForm onNewColor={(title, color) => {
     console.log(`TODO: add new ${title} and ${color} to the list`)
     console.log(`TODO: render UI with new Color`)
@@ -165,14 +165,14 @@ erty would lead to a JavaScript error because the component will
 try to invoke an undefined value.
 - This can be avoided by first checking for the existence of the func‐
 tion property:
-```
+``` javascript
 if (this.props.onNewColor) {
  this.props.onNewColor(_title.value, _color.value)
 }
 ```
 - A better solution is to define the function property in the compo‐
 nent’s propTypes and defaultProps:
-```
+``` javascript
 AddColorForm.propTypes = {
  onNewColor: PropTypes.func
 }
@@ -182,7 +182,7 @@ AddColorForm.defaultProps = {
 ```
 #### Refs in Stateless Functional Components
 - Let’s refactor AddColorForm as a stateless functional component:
-```
+``` javascript
 const AddColorForm = ({ onNewColor = f => f }) => {
     let _title, _color
     const submit = e => {
@@ -221,7 +221,7 @@ the UI as efficiently as possible to reflect that change
 #### Introducing Component State
 - State represents data that we may wish to change within a component. 
 - *Star component*
-```
+``` javascript
 const Star = ({ selected = false, onClick = f => f }) =>
     <div className={(selected) ? "star selected" : "star"}
         onClick={onClick}>
@@ -233,7 +233,7 @@ Star.propTypes = {
 }
 ```
 - *StartRating component*
-```
+``` javascript
 class StarRating extends Component {
 
     constructor(props) {
@@ -289,7 +289,7 @@ necessary cases for this pattern. The most common case for this is when we creat
 reusable component that we would like to use across applications in different compo‐
 nent trees.
 - *StartRating component*
-```
+``` javascript
 class StarRating extends Component {
 
     constructor(props) {
@@ -344,7 +344,7 @@ as having a “single source of truth.”
 - The color organizer allows users to add, name, rate, and remove colors in their cus‐
 tomized lists. The entire state of the color organizer can be represented with a single
 array:
-```
+``` javascript
 {
     colors: [
         {
@@ -370,7 +370,7 @@ array:
 ```
 #### Passing Properties Down the Component Tree
 - *StarRating Component*
-```
+``` javascript
 const StarRating = ({ starsSelected = 0, totalStars = 5, onRate = f => f }) =>
     <div className="star-rating">
         {[...Array(totalStars)].map((n, i) =>
@@ -382,7 +382,7 @@ const StarRating = ({ starsSelected = 0, totalStars = 5, onRate = f => f }) =>
     </div>
 ```
 - *Color component*
-```
+``` javascript
 const Color = ({ title, color, rating = 0, onRemove = f => f, onRate = f => f }) =>
     <section className="color">
         <h1>{title}</h1>
@@ -396,7 +396,7 @@ const Color = ({ title, color, rating = 0, onRemove = f => f, onRate = f => f })
     </section>
 ```
 - *ColorList component*
-```
+``` javascript
 const ColorList = ({ colors = [], onRate = f => f, onRemove = f => f }) =>
     <div className="color-list">
         {(colors.length === 0) ?
@@ -411,7 +411,7 @@ const ColorList = ({ colors = [], onRate = f => f, onRemove = f => f }) =>
     </div>
 ```
 - *App*
-```
+``` javascript
 import { Component } from 'react'
 import { v4 } from 'uuid'
 import AddColorForm from './AddColorForm'
