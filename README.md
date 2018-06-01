@@ -5,4 +5,4 @@ For learning react
 - Open cmd window and run npm install in the root directory
 - Open cmd window and run npm run start:dev in the root directory
 ## Technical Skill Set
-![TechnicalSkillSet](.\doc\images\TechnicalSkillSet.png)
+![TechnicalSkillSet](/doc/images/TechnicalSkillSet.png)
