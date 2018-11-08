@@ -59,3 +59,9 @@ sudo ./install.sh
 - ZZ 保存并退出
 - :q! 强制退出并忽略所有更改
 - :e! 放弃所有修改，并打开原来文件
+
+### Openssh
+- sudo apt install openssh-server
+- sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
+- sudo chmod a-w /etc/ssh/sshd_config.original
+- sudo systemctl restart sshd.service
