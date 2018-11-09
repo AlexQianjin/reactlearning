@@ -65,3 +65,12 @@ sudo ./install.sh
 - sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
 - sudo chmod a-w /etc/ssh/sshd_config.original
 - sudo systemctl restart sshd.service
+
+### ping
+- apt-get install -yqq inetutils-ping
+
+### add-apt-repository
+- apt-get install software-properties-common
+
+### curl
+- apt install -y curl
