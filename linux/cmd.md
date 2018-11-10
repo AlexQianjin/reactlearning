@@ -36,6 +36,12 @@
 - lsof -i :8000
 - lshw | less
 ```
+sudo passwd root
+sudo passwd -u root
+sudo passwd -l root
+sudo -i
+```
+```
 #!/bin/bash  
 echo "This is a shell script"  
 ls -lah  
