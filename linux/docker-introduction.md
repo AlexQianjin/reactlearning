@@ -24,9 +24,9 @@ docker inspect ubuntu:14.04
 docker history ubuntu:14.04
 docker search
   docker search --automated -s 3 nginx
-docker rm [IMAGE]
-  docker rm myubuntu:latest
-  docker rm a21c0840213e
+docker rmi [IMAGE]
+  docker rmi myubuntu:latest
+  docker rmi a21c0840213e
 ```
 #### Create Image
 ```
@@ -44,4 +44,48 @@ docker save / docker load
 ```
 docker create
   docker create -it ubuntu:latest
+docker start
+  docker start af
+docker ps / docker ps -a
+docker run
+  docker run ubuntu /bin/echo 'Hello world'
+  docker run -it ubuntu:14.04 /bin/bash
+  docker run -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1;"
+docker logs
+  docker logs ce5
+docker stop
+  docker stop ce5
+docker attach
+  docker run -itd ubuntu
+  docker attach [CONTAINER]
+docker exec
+  docker exec -it 243c32535da7 /bin/bash
+docker rm
+  docker rm 2ae
+docker export
+  docker export -o test_for_run.tar ce5
+docker import
+  docker import test_for_run.tar = test/ubuntu:v1.0
+```
+
+## Data Management
+#### Data Volume
+```
+docker run -d -P web -v /webapp training/webapp python app.py
+docker run -d -P web -v /src/webapp:/opt/webapp training/webapp python app.py
+```
+#### Data Volume Container
+```
+docker run -it -v /dbdata --name dbdata ubuntu
+docker run -it --volumes-from dbdata --name db1 ubuntu
+docker run -it --volumes-from dbdata --name db2 ubuntu
+```
+#### Backup
+```
+docker run --volumes-from dbdata -v $(pwd):/backup --name worker ubuntu tar cvf /backup/backup.tar /dbdata
+```
+#### Restore
+```
+docker run -v /dbdata --name dbdata2 ubuntu /bin/bash
+docker run --volumes-from dbdta2 -v $(pwd):/backup busybox tar xvf /backup/backup.tar
 ```
