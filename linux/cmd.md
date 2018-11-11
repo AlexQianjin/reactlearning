@@ -35,6 +35,7 @@
 - sudo bash install.sh
 - lsof -i :8000
 - lshw | less
+- echo -e "aaa \nbbb \nccc" >> env
 ```
 sudo passwd root
 sudo passwd -u root
