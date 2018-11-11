@@ -80,3 +80,6 @@ sudo ./install.sh
 
 ### curl
 - apt install -y curl
+
+### mongo in docker
+- docker run -d --name mymongo -p 27017:27017 -v $(pwd)/initmongo.js:/docker-entrypoint-initdb.d mongod
