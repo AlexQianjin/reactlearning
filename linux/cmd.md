@@ -36,6 +36,8 @@
 - lsof -i :8000
 - lshw | less
 - echo -e "aaa \nbbb \nccc" >> env
+- sed -i 'a xxx' txt
+- sed -i '4d' txt
 ```
 sudo passwd root
 sudo passwd -u root
