@@ -35,9 +35,14 @@
 - sudo bash install.sh
 - lsof -i :8000
 - lshw | less
-- echo -e "aaa \nbbb \nccc" >> env
+- free 
+- free -m
+- df -h
+- fdisk -l
+- echo -e "NODE_ENV=production \nPORT=3000 " >> .env
 - sed -i 'a xxx' txt
 - sed -i '4d' txt
+- sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 ```
 sudo passwd root
 sudo passwd -u root
