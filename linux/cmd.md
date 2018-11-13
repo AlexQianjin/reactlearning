@@ -23,9 +23,11 @@
 - sudo poweroff
 - sudo reboot
 - sudo netstat -tulpn | grep LISTEN
+- sudo ps -e
 - sudo rm -r
 - sudo ufw allow 1520
 - adduser myuser          # [myuser为用户名，可自定义指定]将提示你输入登录密码，请输入并牢记
+- sudo passwd myuser
 - usermod -aG sudo myuser # 将创建的用户添加到sudo分组中，以便使用管理员的命令
 - exit                    # 结束终端会话
 - sudo passwd 
@@ -43,6 +45,7 @@
 - sed -i 'a xxx' txt
 - sed -i '4d' txt
 - sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+- dpkg -l
 ```
 sudo passwd root
 sudo passwd -u root
