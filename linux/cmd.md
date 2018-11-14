@@ -36,6 +36,7 @@
 - wget https://raw.githubusercontent.com/AlexQianjin/Weapon/master/README.md
 - sudo bash install.sh
 - lsof -i :8000
+- sudo dmidecode -q
 - lshw | less
 - free 
 - free -m
