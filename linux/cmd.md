@@ -112,6 +112,7 @@ sudo ./install.sh
 
 ### mongo in docker
 - sudo docker run -d --name db -p 27017:27017 -v $(pwd)/mongo:/docker-entrypoint-initdb.d -e MONGO_INITDB_DATABASE=weapondb mongo mongod
+- sudo docker run -d --name db -v $(pwd)/scripts/mongo:/docker-entrypoint-initdb.d -e MONGO_INITDB_DATABASE=weapondb mongo mongod
 
 ### cannot access the network in ubuntu or ubuntu docker container
 - echo "nameserver 8.8.8.8" >> /etc/resolv.conf
