@@ -46,6 +46,7 @@
 - sed -i 'a xxx' txt
 - sed -i '4d' txt
 - sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+- sed -i 's/l.alexqin.cn/localhost/g' reverse.conf
 - dpkg -l
 ```
 sudo passwd root
