@@ -89,3 +89,8 @@ docker run --volumes-from dbdata -v $(pwd):/backup --name worker ubuntu tar cvf 
 docker run -v /dbdata --name dbdata2 ubuntu /bin/bash
 docker run --volumes-from dbdta2 -v $(pwd):/backup busybox tar xvf /backup/backup.tar
 ```
+
+## Dockerfile
+```
+docker build -t build/ubuntu-nodejs ./
+```
