@@ -42,7 +42,7 @@
 - free -m
 - df -h
 - fdisk -l
-- echo -e "NODE_ENV=production \nPORT=3000 " >> .env
+- echo -e "NODE_ENV=production \nPORT=3000 \nMONGOLAB_URI=mongodb://db/weapondb" >> .env
 - sed -i 'a xxx' txt
 - sed -i '4d' txt
 - sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
