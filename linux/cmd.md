@@ -23,6 +23,10 @@
 - sudo poweroff
 - sudo reboot
 - sudo netstat -tulpn | grep LISTEN
+- systemctl list-unit-files | grep enabled
+- systemctl | grep running
+- systemctl show [unit]
+- systemctl restart [unit]
 - sudo ps -e
 - sudo rm -r
 - sudo ufw allow 1520
