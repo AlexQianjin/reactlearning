@@ -60,6 +60,8 @@ docker attach
   docker attach [CONTAINER]
 docker exec
   docker exec -it 243c32535da7 /bin/bash
+  To have ctrl+c stop the container you must use -it
+  To detach from the container you should use ctrl+pq
 docker rm
   docker rm 2ae
 docker export
@@ -73,6 +75,7 @@ docker import
 ```
 docker run -d -P web -v /webapp training/webapp python app.py
 docker run -d -P web -v /src/webapp:/opt/webapp training/webapp python app.py
+docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app -w /usr/src/app node node test.js
 ```
 #### Data Volume Container
 ```

@@ -52,6 +52,7 @@
 - sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 - sed -i 's/l.alexqin.cn/localhost/g' reverse.conf
 - dpkg -l
+- find / -name 'let*' -type d
 ```
 sudo passwd root
 sudo passwd -u root
@@ -99,6 +100,7 @@ sudo ./install.sh
 - u    : 复原前一个操作
 - CTRL + r : 重做上一个操作。
 - 小数点'.': 重复前一个动作。
+- :set number
 
 ### Openssh
 - sudo apt install openssh-server
