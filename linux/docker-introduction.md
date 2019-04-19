@@ -20,7 +20,7 @@ docker images
 docker image ls
 docker tag ubuntu:latest myubuntu:latest
 docker inspect ubuntu:14.04
-  docker inspect ubuntu:14.04 {{.Architecture}}
+  docker inspect ubuntu:14.04 \{\{.Architecture\}\}
 docker history ubuntu:14.04
 docker search
   docker search --automated -s 3 nginx
@@ -96,4 +96,9 @@ docker run --volumes-from dbdta2 -v $(pwd):/backup busybox tar xvf /backup/backu
 ## Dockerfile
 ```
 docker build -t build/ubuntu-nodejs ./
+```
+
+## Jekyll
+```
+docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build
 ```
