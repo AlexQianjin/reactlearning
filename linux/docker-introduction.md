@@ -102,3 +102,8 @@ docker build -t build/ubuntu-nodejs ./
 ```
 docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build
 ```
+
+## Nginx
+```
+sudo docker run --name jekyll-nginx -v $PWD:/usr/share/nginx/html:ro -d -p 80:80 nginx
+```
