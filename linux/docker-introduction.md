@@ -107,3 +107,8 @@ docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build
 ```
 docker run --rm --volume="$PWD:/usr/src/app" -w /usr/src/app -it node:11.14.0-alpine /bin/sh -c "npm install && npm run build && cp -r build ../server"
 ```
+
+## Nginx
+```
+sudo docker run --name jekyll-nginx -v $PWD:/usr/share/nginx/html:ro -d -p 80:80 nginx
+```
