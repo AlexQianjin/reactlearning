@@ -102,3 +102,8 @@ docker build -t build/ubuntu-nodejs ./
 ```
 docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build
 ```
+
+## Node
+```
+docker run --rm --volume="$PWD:/usr/src/app" -w /usr/src/app -it node:11.14.0-alpine /bin/sh -c "npm install && npm run build && cp -r build ../server"
+```
