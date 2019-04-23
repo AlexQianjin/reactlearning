@@ -64,6 +64,7 @@ docker exec
   To detach from the container you should use ctrl+pq
 docker rm
   docker rm 2ae
+  docker rm $(docker ps -aq)
 docker export
   docker export -o test_for_run.tar ce5
 docker import
