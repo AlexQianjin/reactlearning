@@ -49,11 +49,15 @@
 ## Git Patch
 - git format-patch -M master
 - git format-patch [commit ID]
+- git format-patch -1
 - git apply --check
 - git am -3 xxx.patch
 - git apply --reject xxx.patch
 - git add .
 - git am --resolved
+
+## Git Rebase
+- git rebase -i
 
 ## Git Remote
 - git remote set-url origin https://...
