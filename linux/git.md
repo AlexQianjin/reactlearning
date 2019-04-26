@@ -12,6 +12,9 @@
 - git revert --no-commit HEAD~2^..HEAD
 - git rm -r --cached <file> (remove tracking file)
 - git mv -f name.java Name.java
+- git checkout staging
+- git reset --hard HEAD^
+- git push -f
  
 ## Git Stash
 - git stash
