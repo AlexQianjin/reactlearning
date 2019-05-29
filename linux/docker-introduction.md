@@ -113,3 +113,17 @@ docker run --rm --volume="$PWD:/usr/src/app" -w /usr/src/app -it node:11.14.0-al
 ```
 sudo docker run --name jekyll-nginx -v $PWD:/usr/share/nginx/html:ro -d -p 80:80 nginx
 ```
+
+## Swagger api
+```
+docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate \
+    -i http://petstore.swagger.io/v2/swagger.json \
+    -l javascript \
+    -o /local/api-client
+	
+docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate \
+    -i /local/api.json \
+    -l javascript \
+    -o /local/out/javascript \
+    -c /local/javascript.config	
+```    

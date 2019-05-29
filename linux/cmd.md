@@ -3,7 +3,7 @@
 - cd
 - ln
 - mkdir
-- rm
+- rm / rm -r -f Github/
 - rmdir
 - mv
 - cp
