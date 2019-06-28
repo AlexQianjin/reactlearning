@@ -109,6 +109,9 @@ sudo ./install.sh
 - sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
 - sudo chmod a-w /etc/ssh/sshd_config.original
 - sudo systemctl restart sshd.service
+- sudo service ssh status
+- sudo nano /etc/ssh/sshd_config
+- sudo service ssh restart
 
 ### ping
 - apt-get install -yqq inetutils-ping
