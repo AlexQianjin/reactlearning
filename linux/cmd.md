@@ -113,6 +113,13 @@ sudo ./install.sh
 - sudo nano /etc/ssh/sshd_config
 - sudo service ssh restart
 
+### Openssl
+- openssl genrsa -aes256 -out private_key.pem 2048
+- openssl rsa -pubout -in private_key.pem -out public_key.pem
+- openssl req -x509 -nodes -newkey rsa:2048 -keyout rsa_private.pem -out rsa_cert.pem -days 3650
+- openssl req -x509 -newkey rsa:2048 -keyout rsa_private.pem -out rsa_cert.pem -subj "/CN=unused" -days 3650
+- openssl pkcs12 -export -in rsa_cert.pem -inkey rsa_private.pem -CSP "Microsoft Enhanced RSA and AES Cryptographic Provider" -out rsa_cert.pfx
+
 ### ping
 - apt-get install -yqq inetutils-ping
 
