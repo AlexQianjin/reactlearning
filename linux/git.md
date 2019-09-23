@@ -66,6 +66,11 @@
 - git remote set-url origin https://...
 - git remote set-url --push origin https://...
 - git remote -v
+
+## Git SSH
+- ssh-keygen -o -t rsa -C "your.email@example.com" -b 4096
+- cat ~/.ssh/id_rsa.pub | clip  **Git Bash on Windows**
+- ssh -T git@example.com
  
 ## 1. 新建代码库
 ```
