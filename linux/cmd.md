@@ -54,6 +54,7 @@
 - sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 - sed -i 's/l.alexqin.cn/localhost/g' reverse.conf
 - dpkg -l
+- dpkg -i foo.deb && apt-get install -f
 - find / -name 'let*' -type d
 ```
 sudo passwd root
