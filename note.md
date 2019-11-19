@@ -6,6 +6,8 @@ VBoxManage modifyhd YOUR_HARD_DISK.vdi --resize SIZE_IN_MB
 VBoxManage modifyhd D:\VM\Windows10\Windows10-disk001.vdi --resize 70000
 VBoxManage modifyhd D:\VM\Windows10\Snapshots\{2d190a82-1d43-4440-a6a8-ec474cea2ce9}.vdi --resize 70000
 VBoxManage modifyhd D:\VM\Windows10\Snapshots\{919a0c8b-9664-43b0-9052-033ac7ee3f4a}.vdi --resize 70000
+VBoxManage clonemedium disk "D:\VM\UbuntuDesktop1910\UbuntuDesktop1910.vdi" "D:\VM\UbuntuDesktop1910\UbuntuDesktop1910-clone.vdi" -variant Fixed
+VBoxManage modifyvm UbuntuDesktop1910 --nested-hw-virt on
 
 VBoxManage -nologo list vms
 
