@@ -24,6 +24,9 @@ minikube dashboard
 kubectl get pods
 kubectl exec -ti nodejs-deployment-5d459f584b-m57rw /bin/sh
 kubectl exec -ti nodejs-deployment-5d459f584b-dk5rg env
+for debug container command: [ "/bin/sh", "-c", "sleep 10000" ]
+command: [ "/bin/sh", "-c", "nginx -g 'daemon off;'" ]
+kubectl run testalpine -ti --image=nginx:1.17.6-alpine /bin/sh
 kubectl describe po/nodejs-deployment-5d459f584b-m57rw
 ```
 
@@ -38,6 +41,7 @@ kubectl delete deployment nodejs-deployment
 ## Service
 ```
 kubectl get services
+kubectl get service nginx-service --watch
 kubectl describe service/nodejs-service
 kubectl delete services hello-minikube
 ```
