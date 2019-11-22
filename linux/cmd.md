@@ -56,6 +56,8 @@
 - dpkg -l
 - dpkg -i foo.deb && apt-get install -f
 - find / -name 'let*' -type d
+- envsubst envsubst < test.txt > output.file
+- echo "export NODEJS_SERVICE_PORT=1233" >> .bashrc && source .bashrc
 ```
 sudo passwd root
 sudo passwd -u root
