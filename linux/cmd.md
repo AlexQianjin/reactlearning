@@ -139,3 +139,6 @@ sudo ./install.sh
 ### cannot access the network in ubuntu or ubuntu docker container
 - echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 - echo "search lan" >> /etc/resolv.conf
+
+### Git Bash (Windows)
+- clip < ~/.ssh/id_rsa.pub
