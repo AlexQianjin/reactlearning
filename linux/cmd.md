@@ -13,6 +13,8 @@
 - more
 - less
 - tail
+- grep
+- find
 
 ### System
 - __to set address manually__  
@@ -141,4 +143,5 @@ sudo ./install.sh
 - echo "search lan" >> /etc/resolv.conf
 
 ### Git Bash (Windows)
+- ssh-keygen -C "qianjin.qin@qq.com"
 - clip < ~/.ssh/id_rsa.pub
