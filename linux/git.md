@@ -48,6 +48,7 @@
 - git fetch --all --prune
 - git fetch -p origin
 - git branch --set-upstream-to=origin/<branch> <branch>
+- git branch --no-merged
 
 ## Git Patch
 - git format-patch -M master
