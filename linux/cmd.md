@@ -145,3 +145,9 @@ sudo ./install.sh
 ### Git Bash (Windows)
 - ssh-keygen -C "qianjin.qin@qq.com"
 - clip < ~/.ssh/id_rsa.pub
+
+### Docker
+- sudo groupadd docker
+- sudo usermod -aG docker ${USER} / sudo gpasswd -a $USER docker
+- su root / su ${USER} / newgrp docker
+- sudo systemctl restart docker
