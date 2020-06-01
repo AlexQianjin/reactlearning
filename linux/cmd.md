@@ -125,6 +125,11 @@ sudo ./install.sh
 - openssl req -x509 -newkey rsa:2048 -keyout rsa_private.pem -out rsa_cert.pem -subj "/CN=unused" -days 3650
 - openssl pkcs12 -export -in rsa_cert.pem -inkey rsa_private.pem -CSP "Microsoft Enhanced RSA and AES Cryptographic Provider" -out rsa_cert.pfx
 - openssl x509 -text -noout -in cert.pem
+- openssl x509 -noout -text -in /etc/letsencrypt/live/el.alexqin.cn/fullchain.pem
+- openssl rsa -noout -text -in /etc/letsencrypt/live/el.alexqin.cn/privkey.pem
+
+### Certbot
+- sudo certbot certonly --manual (also for renew)
 
 ### ping
 - apt-get install -yqq inetutils-ping
