@@ -157,3 +157,14 @@ sudo ./install.sh
 - sudo usermod -aG docker ${USER} / sudo gpasswd -a $USER docker
 - su root / su ${USER} / newgrp docker
 - sudo systemctl restart docker
+
+### PHP
+-  .\php-cgi.exe -b 127.0.0.1:9000 -c .\php.ini (Windows)
+
+### Moodle
+```
+git clone --depth=1 https://github.com/moodle/moodle.git
+git remote set-branches origin 'MOODLE_39_STABLE'
+git fetch --depth 1 origin MOODLE_39_STABLE
+git checkout MOODLE_39_STABLE
+```
