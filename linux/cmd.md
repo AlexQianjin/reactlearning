@@ -63,6 +63,13 @@
 - uname －a
 - cat /proc/version
 - lsb_release -a
+- apt-cache search php7.4-curl
+- ps -ax | grep apache
+- sudo systemctl list-unit-files
+- sudo systemctl list-unit-files | grep enabled
+- sudo systemctl status openresty.service
+- sudo systemctl disable nginx.service
+
 ```
 sudo passwd root
 sudo passwd -u root
@@ -163,6 +170,10 @@ sudo ./install.sh
 
 ### PHP
 -  .\php-cgi.exe -b 127.0.0.1:9000 -c .\php.ini (Windows)
+- php -i | grep extension_dir
+- php -i | grep ini
+- php --ini | grep Loaded
+- php -m
 
 ### Moodle
 ```
@@ -170,4 +181,18 @@ git clone --depth=1 https://github.com/moodle/moodle.git
 git remote set-branches origin 'MOODLE_39_STABLE'
 git fetch --depth 1 origin MOODLE_39_STABLE
 git checkout MOODLE_39_STABLE
+
+git clone -b MOODLE_39_STABLE --depth 1  git://git.moodle.org/moodle.git
+docker network create moodle-net
+docker run --network moodle-net --name moodle-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:8.0.20
+
+mysql>
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';  // 'newuser'@'%'
+GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+FLUSH PRIVILEGES;
+
+GRANT type_of_permission ON database_name.table_name TO ‘username’@'localhost’;
+REVOKE type_of_permission ON database_name.table_name FROM ‘username’@‘localhost’;
+SHOW GRANTS username;
+DROP USER ‘username’@‘localhost’;
 ```
