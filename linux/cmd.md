@@ -1,5 +1,7 @@
 ### Base Commands
 - ls
+- ls ‐ahl
+- ll
 - cd
 - ln
 - mkdir
@@ -25,6 +27,7 @@
 - sudo poweroff
 - sudo reboot
 - sudo netstat -tulpn | grep LISTEN
+- sudo netstat -anp | grep LISTEN
 - systemctl list-unit-files | grep enabled
 - systemctl | grep running
 - systemctl show [unit]
@@ -69,6 +72,7 @@
 - sudo systemctl list-unit-files | grep enabled
 - sudo systemctl status openresty.service
 - sudo systemctl disable nginx.service
+- sudo chown -R $USER moodle/
 
 ```
 sudo passwd root
@@ -184,7 +188,11 @@ git checkout MOODLE_39_STABLE
 
 git clone -b MOODLE_39_STABLE --depth 1  git://git.moodle.org/moodle.git
 docker network create moodle-net
+docker run --network moodle-net -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.8.0
 docker run --network moodle-net --name moodle-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:8.0.20
+docker run --network moodle-net --name moodle-mariadb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mariadb:10.5.4
+docker run --network moodle-net --name myadmin -d -p 8080:80 -e PMA_HOST=moodle-mysql phpmyadmin/phpmyadmin
+docker run --network moodle-net --name myadmin-maria -d -p 8080:80 -e PMA_HOST=moodle-mariadb phpmyadmin/phpmyadmin
 
 mysql>
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';  // 'newuser'@'%'
@@ -195,4 +203,9 @@ GRANT type_of_permission ON database_name.table_name TO ‘username’@'localhos
 REVOKE type_of_permission ON database_name.table_name FROM ‘username’@‘localhost’;
 SHOW GRANTS username;
 DROP USER ‘username’@‘localhost’;
+```
+
+### Red Hat
+```
+sudo yum list installed
 ```
