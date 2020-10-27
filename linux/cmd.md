@@ -131,6 +131,8 @@ sudo ./install.sh
 - sudo service ssh status
 - sudo nano /etc/ssh/sshd_config
 - sudo service ssh restart
+- ssh-keygen -t rsa -b 4096 -C "alex.qin@aveva.com"
+- ssh-copy-id alex@172.96.19.251 -p 122 (client side)
 
 ### Openssl
 - openssl genrsa -aes256 -out private_key.pem 2048
