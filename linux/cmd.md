@@ -17,6 +17,7 @@
 - tail
 - grep
 - find
+- du
 
 ### System
 - __to set address manually__  
@@ -73,6 +74,9 @@
 - sudo systemctl status openresty.service
 - sudo systemctl disable nginx.service
 - sudo chown -R $USER moodle/
+- du -sh data/
+- du -sm data/
+- ls ‐lh
 
 ```
 sudo passwd root
