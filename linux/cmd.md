@@ -62,6 +62,9 @@
 - dpkg -l
 - dpkg -i foo.deb && apt-get install -f
 - find / -name 'let*' -type d
+- find . -regex '.\/txt.+' | xargs -i mv {} ./test1
+- find . -regex '.\/txt.+' | xargs -I {} mv {} ./test1
+- find . -regex '.\/txt.+' -exec mv {} ./test1 \;
 - envsubst envsubst < test.txt > output.file
 - echo "export NODEJS_SERVICE_PORT=1233" >> .bashrc && source .bashrc
 - uname －a
