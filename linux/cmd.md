@@ -80,6 +80,7 @@
 - du -sh data/
 - du -sm data/
 - ls ‐lh
+- grep -r font-size . | wc -l // "count number"
 
 ```
 sudo passwd root
