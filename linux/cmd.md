@@ -81,6 +81,7 @@
 - du -sm data/
 - ls ‐lh
 - grep -r font-size . | wc -l // "count number"
+- grep -r h[1-6] ./*.css | wc -l
 
 ```
 sudo passwd root
