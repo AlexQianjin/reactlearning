@@ -221,3 +221,32 @@ DROP USER ‘username’@‘localhost’;
 ```
 sudo yum list installed
 ```
+
+### Setup Ubuntu
+#### Update sources.list
+```
+lsb_release -a | grep Codename | awk '{print $2}' # 输出结果为下文中的Codename
+
+vi sources.list
+
+deb http://mirrors.aliyun.com/ubuntu/ $Codename main multiverse restricted universe
+deb http://mirrors.aliyun.com/ubuntu/ $Codename-backports main multiverse restricted universe
+deb http://mirrors.aliyun.com/ubuntu/ $Codename-proposed main multiverse restricted universe
+deb http://mirrors.aliyun.com/ubuntu/ $Codename-security main multiverse restricted universe
+deb http://mirrors.aliyun.com/ubuntu/ $Codename-updates main multiverse restricted universe
+deb-src http://mirrors.aliyun.com/ubuntu/ $Codename main multiverse restricted universe
+deb-src http://mirrors.aliyun.com/ubuntu/ $Codename-backports main multiverse restricted universe
+deb-src http://mirrors.aliyun.com/ubuntu/ $Codename-proposed main multiverse restricted universe
+deb-src http://mirrors.aliyun.com/ubuntu/ $Codename-security main multiverse restricted universe
+deb-src http://mirrors.aliyun.com/ubuntu/ $Codename-updates main multiverse restricted universe
+
+apt-get update
+apt upgrade
+```
+
+#### Install docker
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
+# DRY_RUN=1 sh ./get-docker.sh
+sudo sh get-docker.sh
+```
