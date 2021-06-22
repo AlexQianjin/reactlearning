@@ -268,3 +268,14 @@ sudo systemctl restart docker
 git --version
 sudo apt install git
 ```
+
+#### Install ibus-pinyin
+- Settings => Region & Language => Manage Installed Languages => Install/Remove Languages... => Chinese(simplified) => Apply
+```
+sudo apt install ibus ibus-clutter ibus-gtk ibus-gtk3
+im-config -s ibus
+sudo apt install ibus-pinyin
+sudo ibus-setup
+reboot
+```
+- Settings => Region & Language => Input Sources => +
