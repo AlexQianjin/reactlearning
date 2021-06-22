@@ -250,3 +250,21 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 # DRY_RUN=1 sh ./get-docker.sh
 sudo sh get-docker.sh
 ```
+
+#### Setup docker image mirror
+```
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://{xxxxxxx}i.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+#### Install git
+```
+git --version
+sudo apt install git
+```
