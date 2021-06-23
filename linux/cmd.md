@@ -33,7 +33,6 @@
 - systemctl | grep running
 - systemctl show [unit]
 - systemctl restart [unit]
-- sudo ps -e
 - sudo rm -r
 - sudo ufw allow 1520
 - adduser myuser          # [myuser为用户名，可自定义指定]将提示你输入登录密码，请输入并牢记
@@ -72,6 +71,9 @@
 - lsb_release -a
 - apt-cache search php7.4-curl
 - ps -ax | grep apache
+- ps -e / ps -A
+- ps -aux
+- kill {pid}
 - sudo systemctl list-unit-files
 - sudo systemctl list-unit-files | grep enabled
 - sudo systemctl status openresty.service
@@ -176,6 +178,8 @@ sudo ./install.sh
 
 ### Git Bash (Windows)
 - ssh-keygen -C "qianjin.qin@qq.com"
+- ssh-keygen -t rsa -b 4096 -C "qianjin.qin@qq.com"
+- ssh-keygen -t ed25519 -C "qianjin.qin@qq.com"
 - clip < ~/.ssh/id_rsa.pub
 
 ### Docker
